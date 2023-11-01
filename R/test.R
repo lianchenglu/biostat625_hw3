@@ -19,7 +19,6 @@ test<-data.frame(
 
 test <- scale(test)
 cca(test[,1:4],test[,5:8])
-cca_advanced(test[,1:4],test[,5:8])
 cancor(test[,1:4],test[,5:8])
 
 (dtf <- data.frame(Weight = c(60.1, 60.38,  59.74,  58.04,  59.67,  59.44,  58.7,   59.75,  60.5,   56.95),
@@ -30,13 +29,6 @@ cancor(test[,1:4],test[,5:8])
 df <- scale(dtf)
 A <- df[,1:2]
 B <- df[,3:5]
-ca <-cca(A,B)
-cancor(A,B,xcenter=FALSE,ycenter = FALSE)
+cca(A,B)
+cancor(A,B)
 
-x <- test[,1:4]
-y <- test[,5:8]
-cov_xx <- cov(x)
-
-library(pracma)
-sqrtm(cov_xx)$Binv
-solve(matrixsqrt(cov_xx))
