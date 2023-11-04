@@ -1,14 +1,22 @@
-# Define a function that finds the square root of a matrix
-#' Title
+#' Matrix Square Root
 #'
-#' @param m
-#' A matrix
-#' @return
-#' The square root of a matrix
-#' @export
+#' This function calculates the square root of a matrix.
+#'
+#' @param m A matrix which we want to find the square root of.
+#'
+#' @return The square root of the input matrix m.
 #'
 #' @examples
+#' matrixsqrt <- function(m) {
 #'
+#'    eig <- eigen(m)
+#'    Q <- eig$vectors
+#'    rsqrtD <- sqrt(eig$values)
+#'    return(Q %*% diag(rsqrtD) %*% t(Q))
+#' }
+#'
+#' @export
+
 matrixsqrt <- function(m) {
   eig <- eigen(m)
   Q <- eig$vectors
@@ -16,14 +24,17 @@ matrixsqrt <- function(m) {
   return(Q %*% diag(rsqrtD) %*% t(Q))
 }
 
-# CCA function
-#' Title
+#' Simple Canonical Correlation Analysis
 #'
-#' @param x
-#' @param y
+#' This function conducts the simple Canonical Correlation Analysis (CCA) between two sets of variables.
 #'
-#' @return the relationship between dataset x and dataset y
-#' @export
+#' @param x is a matrix/dataframe where each column is a variable and each row is an observation.
+#' @param y is another matrix/dataframe where each column is a variable and each row is an observation.
+#'
+#' @return A list containing:
+#' - "cor": The canonical correlation coefficients
+#' - "xcoef": The canonical vector of x standardized
+#' - "ycoef": The canonical vector of y standardized
 #'
 #' @examples
 #' x <- matrix(rnorm(2000), 1000, 2)
@@ -43,6 +54,7 @@ matrixsqrt <- function(m) {
 #'
 #' system.time(cca_simple(x,y)) # Time of my function
 #' system.time(cancor(x,y)[1:3]) # Time of the R build-in cca function
+#' @export
 
 cca_simple <- function(x, y) {
   # centralizer the data
