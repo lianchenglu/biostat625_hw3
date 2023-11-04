@@ -36,10 +36,21 @@ test_that("cca_simple function", {
   y_null = matrix(ncol=5)
   expect_error(cca_simple(x_null, y_null))
 
+  # Time test the cca simp function using system time
+  start.time <- Sys.time()
+  result <- cca_simple(x, y)
+  end.time <- Sys.time()
+  cat('Time of test set 1 of cca_simple: ', end.time - start.time, '\n')
+  # Time test R's built-in cancor function using system time
+  start.time <- Sys.time()
+  benchmark <- cancor(x, y)[1:3]
+  end.time <- Sys.time()
+  cat('Time of test set 1 of cancor: ', end.time - start.time, '\n')
+
   # Create a multivariable data set
   set.seed(123)
-  x <- matrix(rnorm(100000), ncol=5)
-  y <- matrix(rnorm(100000), ncol=5)
+  x <- matrix(rnorm(10000000), ncol=5)
+  y <- matrix(rnorm(10000000), ncol=5)
 
   # Using R's built-in cancor function to get the baseline results,
   # only the corrected correlations, x and y coefficients are obtained
@@ -60,4 +71,14 @@ test_that("cca_simple function", {
   x_null = matrix(ncol=5)
   y_null = matrix(ncol=5)
   expect_error(cca_simple(x_null, y_null))
+  # Time test the cca simp function using system time
+  start.time <- Sys.time()
+  result <- cca_simple(x, y)
+  end.time <- Sys.time()
+  cat('Time of test set 2 of cca_simple: ', end.time - start.time, '\n')
+  # Time test R's built-in cancor function using system time
+  start.time <- Sys.time()
+  benchmark <- cancor(x, y)[1:3]
+  end.time <- Sys.time()
+  cat('Time of test set 2 of cancor: ', end.time - start.time, '\n')
 })
