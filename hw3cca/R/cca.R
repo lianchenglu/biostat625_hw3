@@ -1,50 +1,5 @@
-# Define a function that finds the square root of a matrix
-#' Title
-#'
-#' @param m
-#' A matrix
-#' @return
-#' The square root of a matrix
-#' @export
-#'
-#' @examples
-#'
-matrixsqrt <- function(m) {
-  eig <- eigen(m)
-  Q <- eig$vectors
-  rsqrtD <- sqrt(eig$values)
-  return(Q %*% diag(rsqrtD) %*% t(Q))
-}
-
-# CCA function
-#' Title
-#'
-#' @param x
-#' @param y
-#'
-#' @return the relationship between dataset x and dataset y
-#' @export
-#'
-#' @examples
-#' x <- matrix(rnorm(2000), 1000, 2)
-#' y <- matrix(rnorm(2000), 1000, 2)
-#' res <- cca_simple(x, y)
-#' print(res)
-
-#' x <- matrix(rnorm(200000), 40000, 5)
-#' y <- matrix(rnorm(200000), 40000, 5)
-#' res <- cca_simple(x, y)
-#' print(res)
-#'
-#' x <- matrix(rnorm(2000000), 400000, 5)
-#' y <- matrix(rnorm(2000000), 400000, 5)
-#' res <- cca_simple(x, y)
-#' print(res)
-#'
-#' system.time(cca_simple(x,y)) # Time of my function
-#' system.time(cancor(x,y)[1:3]) # Time of the R build-in cca function
-
-cca_simple <- function(x, y) {
+cca <-
+function(x, y) {
   # centralizer the data
   x <- scale(x, center = TRUE, scale = FALSE)
   y <- scale(y, center = TRUE, scale = FALSE)
@@ -76,8 +31,8 @@ cca_simple <- function(x, y) {
   can_cor <- sqrt(A$values)
 
   return(list(
-    cor = can_cor,
-    xcoef = x_coef,
-    ycoef = y_coef
+    can_cor = can_cor,
+    x_coef = x_coef,
+    y_coef = y_coef
   ))
 }
