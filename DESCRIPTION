@@ -4,8 +4,10 @@ Title: What the Package Does (Title Case)
 Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer <chenggg@umich.edu>
-Description: This is a simple method to calculate CCA.
-    Use four spaces when indenting paragraphs within the Description.
+Description: This is a simple method to calculate CCA. It is designed to 
+  calculate the CCA when the number of input X and Y columns is the same. 
+  The correlation generated is correct when the number of columns is different, 
+  but the number of rows or columns for the correlation coefficient will be different.
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

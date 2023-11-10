@@ -9,7 +9,6 @@
 library(testthat)
 library(hw3cca)
 
-library(testthat)
 test_that("cca_simple function", {
   # Create a multivariable data set
   set.seed(123)
