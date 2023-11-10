@@ -1,0 +1,2 @@
+export("benchmark", "can_cor", "cca_simple", "end.time", "matrixsqrt", "res1", "result",
+       "start.time", "x", "x_mismatched_dim", "x_null", "y", "y_null")
