@@ -22,8 +22,8 @@ cca_simple(x, y)
 cancor(x,y)[1:3]
 
 
-x <- matrix(rnorm(200000), 4000, 50)
-y <- matrix(rnorm(200000), 4000, 50)
+x <- matrix(rnorm(200000), 5000, 40)
+y <- matrix(rnorm(200000), 5000, 40)
 cca_simple(x, y)
 cancor(x,y)[1:3]
 
